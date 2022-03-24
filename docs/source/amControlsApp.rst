@@ -13,7 +13,7 @@ amControlsApp EPICS application
 
 amControls includes a complete example EPICS application, including:
 
-- A database file and corresponding autosave request file that contain the PVs required by the mctoptics.py base class.
+- A database file and corresponding autosave request file that contain the PVs required by the amcontrols.py base class.
 - OPI screens for medm
 - An example IOC application that can be used to run the above databases.
   The databases are loaded in the IOC with the example substitutions file, 
@@ -23,7 +23,7 @@ amControls includes a complete example EPICS application, including:
 Base class files
 ================
 The following tables list all of the records in the amControls.template file.
-These records are used by the mctoptics base class and so are required.
+These records are used by the amcontrols base class and so are required.
 
 amControls.template
 -------------------

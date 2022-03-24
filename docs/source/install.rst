@@ -32,7 +32,7 @@ To build a minimal synApp::
     #. Set FULL_CLONE=True
     #. Set EPICS_BASE to point to the location of EPICS base.  This could be on APSshare (the default), or a local version you built.
     
-    For mctoptics you need 
+    For amcontrols you need 
     
     #. ASYN=R4-37
     #. AUTOSAVE=R5-10
@@ -57,17 +57,17 @@ To build a minimal synApp::
 .. warning:: If building for RedHat8 uncomment **TIRPC=YES** in asyn-RX-YY/configure/CONFIG_SITE
 
 
-- Clone the mctoptics module into synApps/support::
+- Clone the amcontrols module into synApps/support::
     
-    $ git clone https://github.com/tomography/mctoptics.git
+    $ git clone https://github.com/tomography/amcontrols.git
 
 - Edit configure/RELEASE add this line to the end::
     
-    MCTOPTICS=$(SUPPORT)/mctoptics
+    AMCONTROLS=$(SUPPORT)/amcontrols
 
 - Edit Makefile add this line to the end of the MODULE_LIST::
     
-    MODULE_LIST += MCTOPTICS
+    MODULE_LIST += AMCONTROLS
 
 - Run the following commands::
 
@@ -77,13 +77,13 @@ To build a minimal synApp::
 Testing the installation
 ------------------------
 
-- Edit /epics/synApps/support/mctoptics/configure to set EPICS_BASE to point to the location of EPICS base, i.e.::
+- Edit /epics/synApps/support/amcontrols/configure to set EPICS_BASE to point to the location of EPICS base, i.e.::
 
     EPICS_BASE=/APSshare/epics/base-3.15.6
 
 - Start the epics ioc and associated medm screen with::
 
-    $ cd ~/epics/synApps/support/mctoptics/iocBoot/iocAMControls
+    $ cd ~/epics/synApps/support/amcontrols/iocBoot/iocAMControls
     $ start_IOC
     $ start_medm
 

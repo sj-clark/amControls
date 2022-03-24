@@ -1,5 +1,5 @@
 '''
-    mctoptics custom logger
+    amcontrols custom logger
     
 '''
 import logging

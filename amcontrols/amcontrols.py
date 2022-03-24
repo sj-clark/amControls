@@ -8,8 +8,8 @@ import signal
 import json
 
 from pathlib import Path
-from mctoptics import util
-from mctoptics import log
+from amcontrols import util
+from amcontrols import log
 from epics import PV
 
 data_path = Path(__file__).parent / 'data'
@@ -82,7 +82,7 @@ class AMControls():
         thread = threading.Thread(target=self.reset_watchdog, args=(), daemon=True)
         thread.start()
 
-        log.setup_custom_logger("./mctoptics.log")
+        log.setup_custom_logger("./amcontrols.log")
 
     def reset_watchdog(self):
         """Sets the watchdog timer to 5 every 3 seconds"""
@@ -90,7 +90,7 @@ class AMControls():
             self.epics_pvs['Watchdog'].put(5)
             time.sleep(3)
 
-        log.setup_custom_logger("./mctoptics.log")
+        log.setup_custom_logger("./amcontrols.log")
 
     def read_pv_file(self, pv_file_name, macros):
         """Reads a file containing a list of EPICS PVs to be used by AMControls.
