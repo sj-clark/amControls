@@ -1,3 +1,3 @@
-amControls.substitutions
+amcontrols.substitutions
 ========================
-.. literalinclude:: ../../iocBoot/iocAMControls/amControls.substitutions
+.. literalinclude:: ../../iocBoot/iocAMControls/amcontrols.substitutions

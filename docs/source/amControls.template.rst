@@ -1,3 +1,3 @@
-amControls.template
+amcontrols.template
 ===================
-.. literalinclude:: ../../amcontrolsApp/Db/amControls.template
+.. literalinclude:: ../../amcontrolsApp/Db/amcontrols.template

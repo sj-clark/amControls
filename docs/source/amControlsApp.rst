@@ -6,9 +6,9 @@ amcontrolsApp EPICS application
    toctree::
    :hidden:
 
-   amControls.template
-   amControls_settings.req
-   amControls.substitutions
+   amcntrols.template
+   amcontrols_settings.req
+   amcontrols.substitutions
 
 
 amControls includes a complete example EPICS application, including:

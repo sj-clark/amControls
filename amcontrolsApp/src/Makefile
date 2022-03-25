@@ -19,7 +19,7 @@ amcontrolsApp_DBD += asSupport.dbd
 amcontrolsApp_SRCS += amcontrolsApp_registerRecordDeviceDriver.cpp
 
 # Build the main IOC entry point where needed
-amcontrolsApp_SRCS_DEFAULT += amControlsMain.cpp
+amcontrolsApp_SRCS_DEFAULT += amcontrolsMain.cpp
 amcontrolsApp_SRCS_vxWorks += -nil-
 
 amcontrolsApp_LIBS += autosave
