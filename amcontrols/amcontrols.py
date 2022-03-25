@@ -38,12 +38,12 @@ class AMControls():
 
         #Define PVs we will need from the sample x-y-z motors, which is on another IOC
 
-        lens_sample_x_pv_name = self.control_pvs['LensSampleX'].pvname
-        self.control_pvs['LensSampleXPosition']      = PV(lens_sample_x_pv_name + '.VAL')
-        lens_sample_y_pv_name = self.control_pvs['LensSampleY'].pvname
-        self.control_pvs['LensSampleYPosition']      = PV(lens_sample_y_pv_name + '.VAL')
-        lens_sample_z_pv_name = self.control_pvs['LensSampleZ'].pvname
-        self.control_pvs['LensSampleZPosition']      = PV(lens_sample_z_pv_name + '.VAL')
+        sample_x_pv_name = self.control_pvs['SampleX'].pvname
+        self.control_pvs['SampleXPosition']      = PV(sample_x_pv_name + '.VAL')
+        sample_y_pv_name = self.control_pvs['SampleY'].pvname
+        self.control_pvs['SampleYPosition']      = PV(sample_y_pv_name + '.VAL')
+        sample_z_pv_name = self.control_pvs['SampleZ'].pvname
+        self.control_pvs['SampleZPosition']      = PV(sample_z_pv_name + '.VAL')
 
         camera0_rotation_pv_name = self.control_pvs['Camera0Rotation'].pvname
         self.control_pvs['Camera0RotationPosition']  = PV(camera0_rotation_pv_name + '.VAL')
@@ -58,12 +58,6 @@ class AMControls():
         self.control_pvs['CamAcquireTime']          = PV(camera_prefix + 'AcquireTime')
         self.control_pvs['CamArraySizeXRBV']        = PV(camera_prefix + 'ArraySizeX_RBV')
         self.control_pvs['CamArraySizeYRBV']        = PV(camera_prefix + 'ArraySizeY_RBV')
-
-        prefix = self.pv_prefixes['OverlayPlugin']
-        self.control_pvs['OPEnableCallbacks'] = PV(prefix + 'EnableCallbacks')
-        self.control_pvs['OP1Use']            = PV(prefix + '1:Use')        
-        self.control_pvs['OP1CenterX']        = PV(prefix + '1:CenterX')        
-        self.control_pvs['OP1CenterY']        = PV(prefix + '1:CenterY')        
 
         self.epics_pvs = {**self.config_pvs, **self.control_pvs}
 
@@ -232,9 +226,9 @@ class AMControls():
         self.lens_cur = lens_select
 
         # move x,y,z motors to wrt relative offsets        
-        x = self.epics_pvs['LensSampleXPosition'].get()
-        y = self.epics_pvs['LensSampleYPosition'].get()
-        z = self.epics_pvs['LensSampleZPosition'].get()
+        x = self.epics_pvs['SampleXPosition'].get()
+        y = self.epics_pvs['SampleYPosition'].get()
+        z = self.epics_pvs['SampleZPosition'].get()
         x_new = x + x_select - x_cur
         y_new = y + y_select - y_cur
         z_new = z + z_select - z_cur
@@ -242,9 +236,9 @@ class AMControls():
         log.info('move Y from %f to %f', y, y_new)
         log.info('move Z from %f to %f', z, z_new)
         log.info('move camera %s rotation to %f' %(cam, camera_rotation))        
-        self.epics_pvs['LensSampleXPosition'].put(x_new)
-        self.epics_pvs['LensSampleYPosition'].put(y_new)
-        self.epics_pvs['LensSampleZPosition'].put(z_new)
+        self.epics_pvs['SampleXPosition'].put(x_new)
+        self.epics_pvs['SampleYPosition'].put(y_new)
+        self.epics_pvs['SampleZPosition'].put(z_new)
         self.epics_pvs['Camera'+str(cam)+'RotationPosition'].put(camera_rotation) # no wait, assuming the lens movement is the slowest part
 
         
@@ -259,20 +253,20 @@ class AMControls():
             log.info('Changing Optique Peter lens')
             if(self.epics_pvs['LensSelect'].get() == 0):
                 lens_name = self.epics_pvs['LensName0'].get()
-                self.epics_pvs['MCTStatus'].put('Moving to lens: ' + lens_name)
+                self.epics_pvs['AMStatus'].put('Moving to lens: ' + lens_name)
                 self.epics_pvs['LensMotor'].put(lens_pos0, wait=True, timeout=120)
             elif(self.epics_pvs['LensSelect'].get() == 1):
                 lens_name = self.epics_pvs['LensName1'].get()
-                self.epics_pvs['MCTStatus'].put('Moving to lens: '+ lens_name)
+                self.epics_pvs['AMStatus'].put('Moving to lens: '+ lens_name)
                 self.epics_pvs['LensMotor'].put(lens_pos1, wait=True, timeout=120)
             elif(self.epics_pvs['LensSelect'].get() == 2):
                 lens_name = self.epics_pvs['LensName2'].get()
-                self.epics_pvs['MCTStatus'].put('Moving to lens: '+ lens_name)
+                self.epics_pvs['AMStatus'].put('Moving to lens: '+ lens_name)
                 self.epics_pvs['LensMotor'].put(lens_pos2, wait=True, timeout=120)
             # message = 'Lens selected: ' + str(self.epics_pvs['LensSelect'].get())
             message = 'Lens selected: ' + lens_name
             log.info(message)
-            self.epics_pvs['MCTStatus'].put(message)
+            self.epics_pvs['AMStatus'].put(message)
 
             lens_name = lens_name.upper().replace("X", "")
             with open(os.path.join(data_path, 'lens.json')) as json_file:
@@ -302,7 +296,7 @@ class AMControls():
                 log.error('Failed to update: Image pixel size')
         else:
             log.error('Changing Optique Peter lens: Locked')
-            self.epics_pvs['MCTStatus'].put('Lens select is locked')
+            self.epics_pvs['AMStatus'].put('Lens select is locked')
 
         
     def camera_select(self):
@@ -317,15 +311,15 @@ class AMControls():
             camera_name = 'None'
 
             log.info('Changing Optique Peter camera')
-            self.epics_pvs['MCTStatus'].put('Changing Optique Peter camera')
+            self.epics_pvs['AMStatus'].put('Changing Optique Peter camera')
 
             if(self.epics_pvs['CameraSelect'].get() == 0):
                 camera_name = self.epics_pvs['CameraName0'].get()
-                self.epics_pvs['MCTStatus'].put('Camera selected: 0')
+                self.epics_pvs['AMStatus'].put('Camera selected: 0')
                 self.epics_pvs['CameraMotor'].put(camera_pos0, wait=True, timeout=120)
             elif(self.epics_pvs['CameraSelect'].get() == 1):
                 camera_name = self.epics_pvs['CameraName1'].get()
-                self.epics_pvs['MCTStatus'].put('Camera selected: 1')
+                self.epics_pvs['AMStatus'].put('Camera selected: 1')
                 self.epics_pvs['CameraMotor'].put(camera_pos1, wait=True, timeout=120)
             log.info('Camera: %s selected', camera_name)
 
@@ -348,7 +342,7 @@ class AMControls():
                 log.error('Failed to update: Image pixel size')
         else:
             log.error('Changing Optique Peter camera: Locked')
-            self.epics_pvs['MCTStatus'].put('Camera select is locked')
+            self.epics_pvs['AMStatus'].put('Camera select is locked')
 
     def cross_select(self):
         """Plot the cross in imageJ.
@@ -382,20 +376,20 @@ class AMControls():
 
             if(self.epics_pvs['Focus1Select'].get() == 0):
                 focus1_name = self.epics_pvs['Focus1Name0'].get()
-                self.epics_pvs['MCTStatus'].put('Lens 1 moving to the focus position')
+                self.epics_pvs['AMStatus'].put('Lens 1 moving to the focus position')
                 self.epics_pvs['Focus1Motor'].put(focus1_pos0, wait=True, timeout=120)
-                self.epics_pvs['MCTStatus'].put('Lens 1 is the focus position')
+                self.epics_pvs['AMStatus'].put('Lens 1 is the focus position')
             elif(self.epics_pvs['Focus1Select'].get() == 1):
                 focus1_name = self.epics_pvs['Focus1Name1'].get()
-                self.epics_pvs['MCTStatus'].put('Lens 1 moving to replacement position')
+                self.epics_pvs['AMStatus'].put('Lens 1 moving to replacement position')
                 self.epics_pvs['Focus1Motor'].put(focus1_pos1, wait=True, timeout=120)
                 self.epics_pvs['Focus1Lock'].put(0, wait=True)
                 self.epics_pvs['LensLock'].put(0, wait=True)
-                self.epics_pvs['MCTStatus'].put('Lens 1 focus is locked: SET NEW LENS NAME')
+                self.epics_pvs['AMStatus'].put('Lens 1 focus is locked: SET NEW LENS NAME')
 
             log.info('Focus1: %s selected', focus1_name)
         else:
-            self.epics_pvs['MCTStatus'].put('Lens 1 focus is locked: SET NEW LENS NAME')
+            self.epics_pvs['AMStatus'].put('Lens 1 focus is locked: SET NEW LENS NAME')
             self.epics_pvs['Focus1Select'].put(1)
             log.error('Changing Optique Peter focus1: Locked')
 
@@ -417,27 +411,27 @@ class AMControls():
 
             if(self.epics_pvs['Focus2Select'].get() == 0):
                 focus2_name = self.epics_pvs['Focus2Name0'].get()
-                self.epics_pvs['MCTStatus'].put('Lens 2 moving to the focus position')
+                self.epics_pvs['AMStatus'].put('Lens 2 moving to the focus position')
                 self.epics_pvs['Focus2Motor'].put(focus2_pos0, wait=True, timeout=120)
-                self.epics_pvs['MCTStatus'].put('Lens 2 is the focus position')
+                self.epics_pvs['AMStatus'].put('Lens 2 is the focus position')
             elif(self.epics_pvs['Focus2Select'].get() == 1):
                 focus2_name = self.epics_pvs['Focus2Name1'].get()
-                self.epics_pvs['MCTStatus'].put('Lens 2 moving to replacement position 1')
+                self.epics_pvs['AMStatus'].put('Lens 2 moving to replacement position 1')
                 self.epics_pvs['Focus2Motor'].put(focus2_pos1, wait=True, timeout=120)
                 self.epics_pvs['Focus2Lock'].put(0, wait=True)
                 self.epics_pvs['LensLock'].put(0, wait=True)
-                self.epics_pvs['MCTStatus'].put('Lens 2 focus is locked: SET NEW LENS NAME')
+                self.epics_pvs['AMStatus'].put('Lens 2 focus is locked: SET NEW LENS NAME')
             elif(self.epics_pvs['Focus2Select'].get() == 2):
                 focus2_name = self.epics_pvs['Focus2Name2'].get()
-                self.epics_pvs['MCTStatus'].put('Lens 2 moving to replacement position 2')
+                self.epics_pvs['AMStatus'].put('Lens 2 moving to replacement position 2')
                 self.epics_pvs['Focus2Motor'].put(focus2_pos2, wait=True, timeout=120)
                 self.epics_pvs['Focus2Lock'].put(0, wait=True)
                 self.epics_pvs['LensLock'].put(0, wait=True)
-                self.epics_pvs['MCTStatus'].put('Lens 2 focus is locked: SET NEW LENS NAME')
+                self.epics_pvs['AMStatus'].put('Lens 2 focus is locked: SET NEW LENS NAME')
 
             log.info('Focus2: %s selected', focus2_name)
         else:
-            self.epics_pvs['MCTStatus'].put('Lens 2 focus is locked: SET NEW LENS NAME')
+            self.epics_pvs['AMStatus'].put('Lens 2 focus is locked: SET NEW LENS NAME')
             self.epics_pvs['Focus2Select'].put(2)
             log.error('Changing Optique Peter focus2: Locked')
 
@@ -446,7 +440,7 @@ class AMControls():
         sync the optique peter selector with the actual motor positon
         """
 
-        self.epics_pvs['MCTStatus'].put('Sync in progress')
+        self.epics_pvs['AMStatus'].put('Sync in progress')
 
         log.info('Sync camera')
         camera_pos0 = self.epics_pvs['CameraPos0'].get()
@@ -572,7 +566,7 @@ class AMControls():
             log.warning('Sync focus 2: not required, selector is already in the correct position')
            
         if((camera_select_sync == -1) or (lens_select_sync == -1) or (focus1_select_sync == -1) or (focus2_select_sync == -1)):
-            self.epics_pvs['MCTStatus'].put('Sync error: check log for details')
+            self.epics_pvs['AMStatus'].put('Sync error: check log for details')
         else:
-            self.epics_pvs['MCTStatus'].put('Sync done!')
+            self.epics_pvs['AMStatus'].put('Sync done!')
         self.epics_pvs['Sync'].put('Done')

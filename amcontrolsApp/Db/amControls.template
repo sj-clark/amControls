@@ -1,36 +1,32 @@
 # Database for EPICS PVS for txm optics control
 # This database contains all of the PVs used by the txmoptics base class.
 
-###############################
-# TomoScan, Camera  PV Prefixes 
-###############################
+#############
+# PV Prefixes 
+#############
 
 record(stringout, "$(P)$(R)CameraPVPrefix")
 {
    field(VAL,  "$(CAMERA)")
 }
 
-record(stringout, "$(P)$(R)OverlayPluginPVPrefix")
+#######################
+# Sample X-Y-Z PV Names
+#######################
+
+record(stringout, "$(P)$(R)SampleXPVName")
 {
-   field(VAL,  "$(OVERLAY)")
+   field(VAL,  "$(SAMPLE_X)")
 }
 
-############################
-# Lens Sample X-Y-Z PV Names
-############################
-record(stringout, "$(P)$(R)LensSampleXPVName")
+record(stringout, "$(P)$(R)SampleYPVName")
 {
-   field(VAL,  "$(LENS_SAMPLE_X)")
+   field(VAL,  "$(SAMPLE_Y)")
 }
 
-record(stringout, "$(P)$(R)LensSampleYPVName")
+record(stringout, "$(P)$(R)SampleZPVName")
 {
-   field(VAL,  "$(LENS_SAMPLE_Y)")
-}
-
-record(stringout, "$(P)$(R)LensSampleZPVName")
-{
-   field(VAL,  "$(LENS_SAMPLE_Z)")
+   field(VAL,  "$(SAMPLE_Z)")
 }
 
 ###########################
@@ -344,7 +340,7 @@ record(ao, "$(P)$(R)Lens2ZOffset")
 # MCT status via Channel Access
 ###############################
 
-record(waveform,"$(P)$(R)MCTStatus") 
+record(waveform,"$(P)$(R)AMStatus") 
 {
    field(FTVL, "UCHAR")
    field(NELM, "256")

@@ -11,14 +11,13 @@
 # TomoScan, Camera  PV Prefixes 
 ###############################
 $(P)$(R)CameraPVPrefix
-$(P)$(R)OverlayPluginPVPrefix
 
-############################
-# Lens Sample X-Y-Z PV Names
-############################
-$(P)$(R)LensSampleXPVName
-$(P)$(R)LensSampleYPVName
-$(P)$(R)LensSampleZPVName
+#######################
+# Sample X-Y-Z PV Names
+#######################
+$(P)$(R)SampleXPVName
+$(P)$(R)SampleYPVName
+$(P)$(R)SampleZPVName
 
 ###########################
 # Cameras rotation PV Names
@@ -98,7 +97,7 @@ $(P)$(R)Lens2ZOffset
 ###############################
 # MCT status via Channel Access
 ###############################
-#controlPV $(P)$(R)MCTStatus
+#controlPV $(P)$(R)AMStatus
 #controlPV $(P)$(R)Watchdog
 
 ###############

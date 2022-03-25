@@ -1,6 +1,6 @@
 
 file {
-	name="/home/beams/USER2BMB/epics/synApps/support/amcontrols/amcontrolsApp/op/adl/amControlsEPICS_PVs.adl"
+	name="/home/beams/FAST/epics/synApps/support/amcontrols/amcontrolsApp/op/adl/amControlsEPICS_PVs.adl"
 	version=030111
 }
 display {
@@ -270,35 +270,6 @@ text {
 text {
 	object {
 		x=10
-		y=75
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Overlay prefix"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=220
-		y=75
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)OverlayPluginPVPrefix"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=10
 		y=275
 		width=200
 		height=20
@@ -306,7 +277,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="Lens sample X PV"
+	textix="Sample X PV"
 	align="horiz. right"
 }
 "text entry" {
@@ -317,7 +288,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(R)LensSampleXPVName"
+		chan="$(P)$(R)SampleXPVName"
 		clr=14
 		bclr=51
 	}
@@ -335,7 +306,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="Lens sample Y PV"
+	textix="Sample Y PV"
 	align="horiz. right"
 }
 "text entry" {
@@ -346,7 +317,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(R)LensSampleYPVName"
+		chan="$(P)$(R)SampleYPVName"
 		clr=14
 		bclr=51
 	}
@@ -364,7 +335,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="Lens sample Z PV"
+	textix="Sample Z PV"
 	align="horiz. right"
 }
 "text entry" {
@@ -375,7 +346,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(R)LensSampleZPVName"
+		chan="$(P)$(R)SampleZPVName"
 		clr=14
 		bclr=51
 	}
