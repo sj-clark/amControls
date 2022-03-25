@@ -1,6 +1,6 @@
 
 file {
-	name="/home/beams8/USER2BMB/epics/synApps/support/amcontrols/amControlsApp/op/adl/amControls.adl"
+	name="/home/beams8/USER2BMB/epics/synApps/support/amcontrols/amcontrolsApp/op/adl/amControls.adl"
 	version=030111
 }
 display {

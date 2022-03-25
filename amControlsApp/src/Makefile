@@ -5,29 +5,29 @@ include $(TOP)/configure/CONFIG
 #  ADD MACRO DEFINITIONS BELOW HERE
 
 # Build the IOC application
-PROD_IOC = amControlsApp
+PROD_IOC = amcontrolsApp
 
-# amControlsApp.dbd will be created and installed
-DBD += amControlsApp.dbd
+# amcontrolsApp.dbd will be created and installed
+DBD += amcontrolsApp.dbd
 
 # test.dbd will include these files:
-amControlsApp_DBD += base.dbd
-amControlsApp_DBD += busySupport.dbd
-amControlsApp_DBD += asSupport.dbd
+amcontrolsApp_DBD += base.dbd
+amcontrolsApp_DBD += busySupport.dbd
+amcontrolsApp_DBD += asSupport.dbd
 
-# amControlsApp_registerRecordDeviceDriver.cpp derives from test.dbd
-amControlsApp_SRCS += amControlsApp_registerRecordDeviceDriver.cpp
+# amcontrolsApp_registerRecordDeviceDriver.cpp derives from test.dbd
+amcontrolsApp_SRCS += amcontrolsApp_registerRecordDeviceDriver.cpp
 
 # Build the main IOC entry point where needed
-amControlsApp_SRCS_DEFAULT += amControlsMain.cpp
-amControlsApp_SRCS_vxWorks += -nil-
+amcontrolsApp_SRCS_DEFAULT += amControlsMain.cpp
+amcontrolsApp_SRCS_vxWorks += -nil-
 
-amControlsApp_LIBS += autosave
-amControlsApp_LIBS += busy
-#amControlsApp_LIBS += asyn
+amcontrolsApp_LIBS += autosave
+amcontrolsApp_LIBS += busy
+#amcontrolsApp_LIBS += asyn
 
 # Finally link IOC to the EPICS Base libraries
-amControlsApp_LIBS += $(EPICS_BASE_IOC_LIBS)
+amcontrolsApp_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 include $(TOP)/configure/RULES
 #----------------------------------------

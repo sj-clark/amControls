@@ -5,9 +5,9 @@ epicsEnvSet("R", "AMControls:")
 
 ## Register all support components
 
-# Use these lines to run the locally built amControlsApp
-dbLoadDatabase "../../dbd/amControlsApp.dbd"
-amControlsApp_registerRecordDeviceDriver pdbbase
+# Use these lines to run the locally built amcontrolsApp
+dbLoadDatabase "../../dbd/amcontrolsApp.dbd"
+amcontrolsApp_registerRecordDeviceDriver pdbbase
 
 
 

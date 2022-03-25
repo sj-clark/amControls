@@ -2,7 +2,7 @@
 TOP = .
 include $(TOP)/configure/CONFIG
 DIRS := $(DIRS) $(filter-out $(DIRS), configure)
-DIRS := $(DIRS) amControlsApp
+DIRS := $(DIRS) amcontrolsApp
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard iocBoot))
 
 define DIR_template

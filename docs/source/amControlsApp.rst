@@ -1,5 +1,5 @@
 ===============================
-amControlsApp EPICS application
+amcontrolsApp EPICS application
 ===============================
 
 .. 
@@ -187,7 +187,7 @@ medm files
 amControls.adl
 ^^^^^^^^^^^^^^
 
-The following is the MEDM screen :download:`amControls.adl <../../amControlsApp/op/adl/amControls.adl>` during a scan. 
+The following is the MEDM screen :download:`amControls.adl <../../amcontrolsApp/op/adl/amControls.adl>` during a scan. 
 The status information is updating.
 
 .. image:: img/amControls.png
@@ -197,7 +197,7 @@ The status information is updating.
 amControlsEPICS_PVs.adl
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The following is the MEDM screen :download:`amControlsEPICS_PVs.adl <../../amControlsApp/op/adl/amControlsEPICS_PVs.adl>`. 
+The following is the MEDM screen :download:`amControlsEPICS_PVs.adl <../../amcontrolsApp/op/adl/amControlsEPICS_PVs.adl>`. 
 
 If these PVs are changed tomoscan must be restarted.
 
