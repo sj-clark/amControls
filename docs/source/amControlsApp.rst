@@ -31,8 +31,8 @@ amControls.template
 This is the database file that contains only the PVs required by the amcontrol.py base class
 :doc:`amControls.template`.
 
-TomoScan and Camera PV Prefixes
--------------------------------
+Camera PV Prefixes
+------------------
 
 .. cssclass:: table-bordered table-striped table-hover
 .. list-table::
@@ -46,8 +46,8 @@ TomoScan and Camera PV Prefixes
     - stringout
     - Contains the prefix for the detector, e.g. 2bmbPG1:
 
-Fast Shutter Select
--------------------
+Example PV name
+---------------
 
 .. cssclass:: table-bordered table-striped table-hover
 .. list-table::
@@ -57,27 +57,9 @@ Fast Shutter Select
   * - Record name
     - Record type
     - Description
-  * - $(P)$(R)ShutterSelect
-    - mbbo
-    - Fast shutter selector for Pos0 and Pos1 position
-  * - $(P)$(R)ShutterPos0
-    - a0
-    - Motor position for the close positiom
-  * - $(P)$(R)ShutterPos1
-    - a0
-    - Motor position for the open positiom
-  * - $(P)$(R)ShutterName0
-    - a0
-    - Fast shutter selector label for Pos0, e.g. Close
-  * - $(P)$(R)ShutterName1
-    - a0
-    - Fast shutter selector label for Pos1, e.g. Open
-  * - $(P)$(R)ShutterLock
-    - bo
-    - Fast shutter lock
-  * - $(P)$(R)ShutterMotorPVName
+  * - $(P)$(R)ExamplePVName
     - stringout
-    - Contains the fast shutter motor PV name, e.g. 2bmb:m5
+    - Contains a PV name, e.g. 32id:m1
 
 Optique Peter camera selector
 -----------------------------
