@@ -1,0 +1,2 @@
+file "amControls.req", P=$(P), R=$(R)
+file "amControls_settings.req", P=$(P), R=$(R)
