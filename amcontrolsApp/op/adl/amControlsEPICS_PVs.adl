@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=883
-		y=68
+		x=1129
+		y=100
 		width=455
-		height=360
+		height=105
 	}
 	clr=14
 	bclr=4
@@ -113,130 +113,14 @@ text {
 rectangle {
 	object {
 		x=5
-		y=40
+		y=45
 		width=445
-		height=310
+		height=55
 	}
 	"basic attribute" {
 		clr=14
 		fill="outline"
 	}
-}
-text {
-	object {
-		x=10
-		y=125
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Opt. Ptr Lens PV"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=220
-		y=125
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)LensMotorPVName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=10
-		y=200
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Opt. Ptr Camera PV"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=220
-		y=200
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CameraMotorPVName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=10
-		y=150
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Opt. Ptr Focus 1 PV"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=220
-		y=150
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)Focus1MotorPVName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=220
-		y=175
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)Focus2MotorPVName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=10
-		y=175
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Opt. Ptr Focus 2 PV"
-	align="horiz. right"
 }
 text {
 	object {
@@ -270,141 +154,25 @@ text {
 text {
 	object {
 		x=10
-		y=275
+		y=74
 		width=200
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Sample X PV"
+	textix="Example PV Name"
 	align="horiz. right"
 }
 "text entry" {
 	object {
 		x=220
-		y=275
+		y=74
 		width=225
 		height=20
 	}
 	control {
-		chan="$(P)$(R)SampleXPVName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=10
-		y=300
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Sample Y PV"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=220
-		y=300
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SampleYPVName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=10
-		y=325
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Sample Z PV"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=220
-		y=325
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SampleZPVName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=10
-		y=225
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Camera 0 Rotation"
-	align="horiz. right"
-}
-text {
-	object {
-		x=10
-		y=250
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Camera 1 Rotation"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=220
-		y=250
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)Camera1RotationPVName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=220
-		y=225
-		width=225
-		height=20
-	}
-	control {
-		chan="$(P)$(R)Camera0RotationPVName"
+		chan="$(P)$(R)ExamplePVName"
 		clr=14
 		bclr=51
 	}

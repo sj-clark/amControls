@@ -7,189 +7,23 @@
 
 record(stringout, "$(P)$(R)CameraPVPrefix")
 {
-   field(VAL,  "$(CAMERA)")
+   field(VAL,  "$(CAMERA_PREFIX)")
 }
 
-#######################
-# Sample X-Y-Z PV Names
-#######################
+##################
+# Example PV Names
+##################
 
-record(stringout, "$(P)$(R)SampleXPVName")
+record(stringout, "$(P)$(R)ExamplePVName")
 {
-   field(VAL,  "$(SAMPLE_X)")
+   field(VAL,  "$(EXAMPLE_PV_NAME)")
 }
 
-record(stringout, "$(P)$(R)SampleYPVName")
-{
-   field(VAL,  "$(SAMPLE_Y)")
-}
+###############
+# Yes/No select
+###############
 
-record(stringout, "$(P)$(R)SampleZPVName")
-{
-   field(VAL,  "$(SAMPLE_Z)")
-}
-
-###########################
-# Cameras rotation PV Names
-###########################
-record(stringout, "$(P)$(R)Camera0RotationPVName")
-{
-   field(VAL,  "$(CAM0_ROT)")
-}
-
-record(stringout, "$(P)$(R)Camera1RotationPVName")
-{
-   field(VAL,  "$(CAM1_ROT)")
-}
-
-###############################
-# Optique Peter camera selector
-###############################
-
-record(mbbo, "$(P)$(R)CameraSelect") {
-  field(DTYP, "Raw Soft Channel")
-  field(NOBT, "3")
-  field(ZRVL, "0x0")
-  field(ONVL, "0x1")
-  field(ZRST, "Pos. 0")
-  field(ONST, "Pos. 1")
-}
-
-record(ao, "$(P)$(R)CameraPos0") {
-  field(PREC, "4")
-  field(VAL,  "$(CAMERA_POS0)")
-}
-
-record(ao, "$(P)$(R)CameraPos1") {
-  field(PREC, "4")
-  field(VAL,  "$(CAMERA_POS1)")
-}
-
-record(stringout, "$(P)$(R)CameraName0") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 0")
-  field(OUT, "$(P)$(R)CameraSelect.ZRST PP MS")
-}
-
-record(stringout, "$(P)$(R)CameraName1") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 1")
-  field(OUT, "$(P)$(R)CameraSelect.ONST PP MS")
-}
-
-record(bo, "$(P)$(R)CameraLock") {
-  field(ZNAM, "Lock")
-  field(ONAM, "Unlock")
-}
-
-record(stringout, "$(P)$(R)CameraMotorPVName")
-{
-   field(VAL,  "$(CAMERA_MOTOR)")
-}
-
-######################################
-# Optique Peter camera rotation offset
-######################################
-
-record(ao, "$(P)$(R)Camera0Lens0RotationOffset")
-{
-   field(PREC,  "4")
-   field(VAL,  0)
-}
-
-record(ao, "$(P)$(R)Camera0Lens1RotationOffset")
-{
-   field(PREC,  "4")
-   field(VAL,  0)
-}
-
-record(ao, "$(P)$(R)Camera0Lens2RotationOffset")
-{
-   field(PREC,  "4")
-   field(VAL,  0)
-}
-
-record(ao, "$(P)$(R)Camera1Lens0RotationOffset")
-{
-   field(PREC,  "4")
-   field(VAL,  0)
-}
-
-record(ao, "$(P)$(R)Camera1Lens1RotationOffset")
-{
-   field(PREC,  "4")
-   field(VAL,  0)
-}
-
-record(ao, "$(P)$(R)Camera1Lens2RotationOffset")
-{
-   field(PREC,  "4")
-   field(VAL,  0)
-}
-
-#############################
-# Optique Peter lens selector
-#############################
-
-record(mbbo, "$(P)$(R)LensSelect") {
-  field(DTYP, "Raw Soft Channel")
-  field(NOBT, "3")
-  field(ZRVL, "0x0")
-  field(ONVL, "0x1")
-  field(ONVL, "0x2")
-  field(ZRST, "Pos. 0")
-  field(ONST, "Pos. 1")
-  field(ONST, "Pos. 2")
-}
-
-record(ao, "$(P)$(R)LensPos0") {
-  field(PREC, "4")
-  field(VAL,  "$(LENS_POS0)")
-}
-
-record(ao, "$(P)$(R)LensPos1") {
-  field(PREC, "4")
-  field(VAL,  "$(LENS_POS2)")
-}
-
-record(ao, "$(P)$(R)LensPos2") {
-  field(PREC, "4")
-  field(VAL,  "$(LENS_POS2)")
-}
-
-record(stringout, "$(P)$(R)LensName0") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 0")
-  field(OUT, "$(P)$(R)LensSelect.ZRST PP MS")
-}
-
-record(stringout, "$(P)$(R)LensName1") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 1")
-  field(OUT, "$(P)$(R)LensSelect.ONST PP MS")
-}
-
-record(stringout, "$(P)$(R)LensName2") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 2")
-  field(OUT, "$(P)$(R)LensSelect.TWST PP MS")
-}
-
-record(bo, "$(P)$(R)LensLock") {
-  field(ZNAM, "Lock")
-  field(ONAM, "Unlock")
-}
-
-record(stringout, "$(P)$(R)LensMotorPVName")
-{
-   field(VAL,  "$(LENS_MOTOR)")
-}
-
-######################
-# Detector image cross
-######################
-
-record(mbbo, "$(P)$(R)CrossSelect") {
+record(mbbo, "$(P)$(R)YesNoSelect") {
   field(DTYP, "Raw Soft Channel")
   field(NOBT, "3")
   field(ZRVL, "0x0")
@@ -198,147 +32,46 @@ record(mbbo, "$(P)$(R)CrossSelect") {
   field(ONST, "No")
 }
 
-########################################
-# Optique Peter lens 1 position selector
-########################################
+###############
+# AM served PVs
+###############
 
-record(mbbo, "$(P)$(R)Focus1Select") {
-  field(DTYP, "Raw Soft Channel")
-  field(NOBT, "3")
-  field(ZRVL, "0x0")
-  field(ONVL, "0x1")
-  field(ZRST, "Pos. 0")
-  field(ONST, "Pos. 1")
-}
-
-record(ao, "$(P)$(R)Focus1Pos0") {
-  field(PREC, "4")
-  field(VAL,  "$(FOCUS1_POS0)")
-}
-
-record(ao, "$(P)$(R)Focus1Pos1") {
-  field(PREC, "4")
-  field(VAL,  "$(FOCUS1_POS1)")
-}
-
-record(stringout, "$(P)$(R)Focus1Name0") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 0")
-  field(OUT, "$(P)$(R)Focus1Select.ZRST PP MS")
-}
-
-record(stringout, "$(P)$(R)Focus1Name1") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 1")
-  field(OUT, "$(P)$(R)Focus1Select.ONST PP MS")
-}
-record(bo, "$(P)$(R)Focus1Lock") {
-  field(ZNAM, "Lock")
-  field(ONAM, "Unlock")
-}
-
-record(stringout, "$(P)$(R)Focus1MotorPVName")
+record(stringout, "$(P)$(R)amControlsPv1")
 {
-   field(VAL,  "$(FOCUS1_MOTOR)")
+   field(VAL,  "Unknown")
 }
 
-record(ao, "$(P)$(R)Lens1XOffset")
+record(ao, "$(P)$(R)amControlsPv2")
 {
-   field(PREC,  "4")
-   field(VAL,  0)
+   field(PREC,  "2")
 }
 
-record(ao, "$(P)$(R)Lens1YOffset")
+record(ao, "$(P)$(R)amControlsPv3")
 {
-   field(PREC,  "4")
-   field(VAL,  0)
+   field(PREC, "2")
+   field(EGU,  "microns")
 }
 
-record(ao, "$(P)$(R)Lens1ZOffset")
+record(ao, "$(P)$(R)amControlsPv4")
 {
-   field(PREC,  "4")
-   field(VAL,  0)
+   field(PREC, "2")
+   field(EGU,  "microns")
 }
 
-########################################
-# Optique Peter lens 2 position selector
-########################################
-
-record(mbbo, "$(P)$(R)Focus2Select") {
-  field(DTYP, "Raw Soft Channel")
-  field(NOBT, "3")
-  field(ZRVL, "0x0")
-  field(ONVL, "0x1")
-  field(ONVL, "0x2")
-  field(ZRST, "Pos. 0")
-  field(ONST, "Pos. 1")
-  field(ONST, "Pos. 2")
-}
-
-record(ao, "$(P)$(R)Focus2Pos0") {
-  field(PREC, "4")
-  field(VAL,  "$(FOCUS2_POS0)")
-}
-
-record(ao, "$(P)$(R)Focus2Pos1") {
-  field(PREC, "4")
-  field(VAL,  "$(FOCUS2_POS1)")
-}
-
-record(ao, "$(P)$(R)Focus2Pos2") {
-  field(PREC, "4")
-  field(VAL,  "$(FOCUS2_POS2)")
-}
-
-record(stringout, "$(P)$(R)Focus2Name0") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 0")
-  field(OUT, "$(P)$(R)Focus2Select.ZRST PP MS")
-}
-
-record(stringout, "$(P)$(R)Focus2Name1") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 1")
-  field(OUT, "$(P)$(R)Focus2Select.ONST PP MS")
-}
-
-record(stringout, "$(P)$(R)Focus2Name2") {
-  field(PINI, "YES")
-  field(VAL, "Pos. 2")
-  field(OUT, "$(P)$(R)Focus2Select.TWST PP MS")
-}
-
-record(bo, "$(P)$(R)Focus2Lock") {
-  field(ZNAM, "Lock")
-  field(ONAM, "Unlock")
-}
-
-record(stringout, "$(P)$(R)Focus2MotorPVName")
+record(stringout, "$(P)$(R)amControlsPv5")
 {
-   field(VAL,  "$(FOCUS2_MOTOR)")
+   field(VAL,  "Unknown")
 }
 
-record(ao, "$(P)$(R)Lens2XOffset")
+record(ao, "$(P)$(R)amControlsPv6")
 {
-   field(PREC,  "4")
-   field(VAL,  0)
+   field(PREC, "2")
+   field(EGU,  "mm")
 }
 
-record(ao, "$(P)$(R)Lens2YOffset")
-{
-   field(PREC,  "4")
-   field(VAL,  0)
-}
-
-record(ao, "$(P)$(R)Lens2ZOffset")
-{
-   field(PREC,  "4")
-   field(VAL,  0)
-}
-
-###############################
-# MCT status via Channel Access
-###############################
+##############################
+# AM status via Channel Access
+##############################
 
 record(waveform,"$(P)$(R)AMStatus") 
 {
@@ -363,51 +96,4 @@ record(bi, "$(P)$(R)ServerRunning")
    field(ZSV,  "MAJOR")
    field(ONAM, "Running")
    field(OSV,  "NO_ALARM")
-}
-
-###############
-# Sync to motor
-###############
-
-record(busy, "$(P)$(R)Sync")
-{
-   field(ZNAM, "Done")
-   field(ONAM, "Sync")
-}
-
-####################
-# Optics information
-####################
-
-record(stringout, "$(P)$(R)ScintillatorType")
-{
-   field(VAL,  "Unknown")
-}
-
-record(ao, "$(P)$(R)ScintillatorThickness")
-{
-   field(PREC,  "0")
-}
-
-record(ao, "$(P)$(R)ImagePixelSize")
-{
-   field(PREC, "2")
-   field(EGU,  "microns")
-}
-
-record(ao, "$(P)$(R)DetectorPixelSize")
-{
-   field(PREC, "2")
-   field(EGU,  "microns")
-}
-
-record(stringout, "$(P)$(R)CameraObjective")
-{
-   field(VAL,  "Unknown")
-}
-
-record(ao, "$(P)$(R)CameraTubeLength")
-{
-   field(PREC, "0")
-   field(EGU,  "mm")
 }

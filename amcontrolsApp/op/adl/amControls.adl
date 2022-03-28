@@ -1,14 +1,14 @@
 
 file {
-	name="/home/beams2/FAST/epics/synApps/support/amcontrols/amcontrolsApp/op/adl/amControls.adl"
+	name="/home/beams/FAST/epics/synApps/support/amcontrols/amcontrolsApp/op/adl/amControls.adl"
 	version=030111
 }
 display {
 	object {
-		x=275
-		y=1272
+		x=289
+		y=1125
 		width=935
-		height=510
+		height=300
 	}
 	clr=14
 	bclr=4
@@ -134,701 +134,31 @@ rectangle {
 		fill="outline"
 	}
 }
-rectangle {
+"choice button" {
 	object {
-		x=5
-		y=122
-		width=460
-		height=315
+		x=644
+		y=183
+		width=100
+		height=75
+	}
+	control {
+		chan="$(P)$(R)YesNoSelect.VAL"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=642
+		y=158
+		width=100
+		height=20
 	}
 	"basic attribute" {
 		clr=14
-		fill="outline"
-		width=4
 	}
-}
-composite {
-	object {
-		x=405
-		y=139
-		width=520
-		height=175
-	}
-	"composite name"=""
-	children {
-		"related display" {
-			object {
-				x=510
-				y=164
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Lens motor"
-				name="single_motor.adl"
-				args="P=$(P1),M1=$(M14)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="-Motor"
-		}
-		"related display" {
-			object {
-				x=510
-				y=189
-				width=100
-				height=20
-			}
-			display[0] {
-				label="camera select setup"
-				name="camera_select_setup.adl"
-				args="P=$(P),R=$(R)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="-Setup"
-		}
-		"choice button" {
-			object {
-				x=825
-				y=164
-				width=100
-				height=75
-			}
-			control {
-				chan="$(P)$(R)CrossSelect.VAL"
-				clr=14
-				bclr=51
-			}
-		}
-		text {
-			object {
-				x=823
-				y=139
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Cross"
-			align="horiz. centered"
-		}
-		"choice button" {
-			object {
-				x=614
-				y=189
-				width=200
-				height=25
-			}
-			control {
-				chan="$(P)$(R)CameraSelect.VAL"
-				clr=14
-				bclr=51
-			}
-			stacking="column"
-		}
-		"choice button" {
-			object {
-				x=614
-				y=164
-				width=200
-				height=20
-			}
-			control {
-				chan="$(P)$(R)CameraLock.VAL"
-				clr=14
-				bclr=20
-			}
-			stacking="column"
-		}
-		text {
-			object {
-				x=614
-				y=139
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Camera 1"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=714
-				y=139
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Camera 2"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=405
-				y=220
-				width=200
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens 1 offset"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=614
-				y=219
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Camera0Lens0RotationOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=405
-				y=245
-				width=200
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens 2 offest"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=614
-				y=244
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Camera0Lens1RotationOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=405
-				y=270
-				width=200
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens 3 offset"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=614
-				y=269
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Camera0Lens2RotationOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=714
-				y=269
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Camera1Lens2RotationOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=714
-				y=244
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Camera1Lens1RotationOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=714
-				y=219
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Camera1Lens0RotationOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"related display" {
-			object {
-				x=714
-				y=294
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Lens motor"
-				name="single_motor.adl"
-				args="P=$(P1),M1=$(M16)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="-Motor"
-		}
-		"related display" {
-			object {
-				x=614
-				y=294
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Lens motor"
-				name="single_motor.adl"
-				args="P=$(P1),M1=$(M15)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="-Motor"
-		}
-	}
-}
-composite {
-	object {
-		x=9
-		y=139
-		width=451
-		height=292
-	}
-	"composite name"=""
-	children {
-		"related display" {
-			object {
-				x=9
-				y=160
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Lens motor"
-				name="single_motor.adl"
-				args="P=$(P1),M1=$(M10)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="- Motor"
-		}
-		"related display" {
-			object {
-				x=9
-				y=185
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Lens select setup"
-				name="lens_select_setup.adl"
-				args="P=$(P),R=$(R)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="-Setup"
-		}
-		"related display" {
-			object {
-				x=359
-				y=315
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Focus2 motor"
-				name="single_motor.adl"
-				args="P=$(P1),M1=$(M13)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="- Motor"
-		}
-		"choice button" {
-			object {
-				x=359
-				y=240
-				width=100
-				height=75
-			}
-			control {
-				chan="$(P)$(R)Focus2Select.VAL"
-				clr=14
-				bclr=51
-			}
-		}
-		"choice button" {
-			object {
-				x=359
-				y=216
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Focus2Lock.VAL"
-				clr=14
-				bclr=20
-			}
-			stacking="column"
-		}
-		"related display" {
-			object {
-				x=359
-				y=335
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Focus 2 select setup"
-				name="focus2_select_setup.adl"
-				args="P=$(P),R=$(R)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="-Setup"
-		}
-		"related display" {
-			object {
-				x=244
-				y=315
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Focus2 motor"
-				name="single_motor.adl"
-				args="P=$(P1),M1=$(M12)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="-Motor"
-		}
-		"choice button" {
-			object {
-				x=244
-				y=240
-				width=100
-				height=75
-			}
-			control {
-				chan="$(P)$(R)Focus1Select.VAL"
-				clr=14
-				bclr=51
-			}
-		}
-		"choice button" {
-			object {
-				x=244
-				y=215
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Focus1Lock.VAL"
-				clr=14
-				bclr=20
-			}
-			stacking="column"
-		}
-		"related display" {
-			object {
-				x=244
-				y=335
-				width=100
-				height=20
-			}
-			display[0] {
-				label="Focus 1 select setup"
-				name="focus1_select_setup.adl"
-				args="P=$(P),R=$(R)"
-			}
-			display[4] {
-				args=" "
-			}
-			clr=0
-			bclr=53
-			label="-Setup"
-		}
-		text {
-			object {
-				x=35
-				y=361
-				width=200
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens offset sample X"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=244
-				y=360
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Lens1XOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=35
-				y=386
-				width=200
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens offest sample Y"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=244
-				y=385
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Lens1YOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=35
-				y=411
-				width=200
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens offset sample Z"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=244
-				y=410
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Lens1ZOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=359
-				y=410
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Lens2ZOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=359
-				y=385
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Lens2YOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=359
-				y=360
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Lens2XOffset"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=129
-				y=139
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens 1"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=244
-				y=139
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens 2"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=359
-				y=139
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Lens 3"
-			align="horiz. centered"
-		}
-		"choice button" {
-			object {
-				x=112
-				y=185
-				width=348
-				height=25
-			}
-			control {
-				chan="$(P)$(R)LensSelect.VAL"
-				clr=14
-				bclr=51
-			}
-			stacking="column"
-		}
-		"choice button" {
-			object {
-				x=112
-				y=160
-				width=348
-				height=20
-			}
-			control {
-				chan="$(P)$(R)LensLock.VAL"
-				clr=14
-				bclr=20
-			}
-			stacking="column"
-		}
-	}
+	textix="Yes/No"
+	align="horiz. centered"
 }
 "text update" {
 	object {
@@ -890,9 +220,9 @@ text {
 rectangle {
 	object {
 		x=468
-		y=122
+		y=120
 		width=465
-		height=200
+		height=180
 	}
 	"basic attribute" {
 		clr=14
@@ -953,8 +283,8 @@ composite {
 }
 rectangle {
 	object {
-		x=479
-		y=330
+		x=15
+		y=125
 		width=435
 		height=20
 	}
@@ -964,103 +294,103 @@ rectangle {
 }
 text {
 	object {
-		x=667
-		y=330
+		x=203
+		y=125
 		width=255
 		height=20
 	}
 	"basic attribute" {
 		clr=54
 	}
-	textix="Visible light detection"
+	textix="AM served PVs"
 }
 text {
 	object {
-		x=633
-		y=480
+		x=169
+		y=275
 		width=160
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Tube length (mm)"
+	textix="amControlsPv6 float"
 	align="horiz. right"
 }
 text {
 	object {
-		x=623
-		y=355
+		x=159
+		y=150
 		width=170
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Scintillator type"
+	textix="amControlsPv1 string"
 	align="horiz. right"
 }
 text {
 	object {
-		x=533
-		y=380
+		x=69
+		y=175
 		width=260
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Scint. thickness (microns)"
+	textix="amControlsPv2 float"
 	align="horiz. right"
 }
 text {
 	object {
-		x=533
-		y=405
+		x=69
+		y=200
 		width=260
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Image pixel size (microns)"
+	textix="amControlsPv3 float"
 	align="horiz. right"
 }
 text {
 	object {
-		x=503
-		y=430
+		x=39
+		y=225
 		width=290
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Detector pixel size (microns)"
+	textix="amControlsPv4 float"
 	align="horiz. right"
 }
 text {
 	object {
-		x=633
-		y=455
+		x=169
+		y=250
 		width=160
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Camera objective mag. (x)"
+	textix="amControlsPv5 string"
 	align="horiz. right"
 }
 "text entry" {
 	object {
-		x=798
-		y=380
+		x=334
+		y=175
 		width=120
 		height=20
 	}
 	control {
-		chan="$(P)$(R)ScintillatorThickness"
+		chan="$(P)$(R)amControlsPv2"
 		clr=14
 		bclr=51
 	}
@@ -1070,13 +400,13 @@ text {
 }
 "text entry" {
 	object {
-		x=798
-		y=355
+		x=334
+		y=150
 		width=120
 		height=20
 	}
 	control {
-		chan="$(P)$(R)ScintillatorType"
+		chan="$(P)$(R)amControlsPv1"
 		clr=14
 		bclr=51
 	}
@@ -1086,13 +416,13 @@ text {
 }
 "text entry" {
 	object {
-		x=798
-		y=430
+		x=334
+		y=225
 		width=120
 		height=20
 	}
 	control {
-		chan="$(P)$(R)DetectorPixelSize"
+		chan="$(P)$(R)amControlsPv4"
 		clr=14
 		bclr=51
 	}
@@ -1102,13 +432,13 @@ text {
 }
 "text entry" {
 	object {
-		x=798
-		y=455
+		x=334
+		y=250
 		width=120
 		height=20
 	}
 	control {
-		chan="$(P)$(R)CameraObjective"
+		chan="$(P)$(R)amControlsPv5"
 		clr=14
 		bclr=51
 	}
@@ -1118,13 +448,13 @@ text {
 }
 "text entry" {
 	object {
-		x=798
-		y=480
+		x=334
+		y=275
 		width=120
 		height=20
 	}
 	control {
-		chan="$(P)$(R)CameraTubeLength"
+		chan="$(P)$(R)amControlsPv6"
 		clr=14
 		bclr=51
 	}
@@ -1134,13 +464,13 @@ text {
 }
 "text entry" {
 	object {
-		x=798
-		y=405
+		x=334
+		y=200
 		width=120
 		height=20
 	}
 	control {
-		chan="$(P)$(R)ImagePixelSize"
+		chan="$(P)$(R)amControlsPv3"
 		clr=14
 		bclr=51
 	}
@@ -1150,8 +480,8 @@ text {
 }
 text {
 	object {
-		x=482
-		y=333
+		x=18
+		y=128
 		width=125
 		height=15
 	}
@@ -1162,8 +492,8 @@ text {
 }
 rectangle {
 	object {
-		x=469
-		y=325
+		x=5
+		y=120
 		width=455
 		height=180
 	}
