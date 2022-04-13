@@ -31,8 +31,8 @@ amControls.template
 This is the database file that contains only the PVs required by the amcontrol.py base class
 :doc:`amControls.template`.
 
-Camera PV Prefixes
-------------------
+Example PV Prefixes
+^^^^^^^^^^^^^^^^^^^
 
 .. cssclass:: table-bordered table-striped table-hover
 .. list-table::
@@ -72,24 +72,60 @@ AM served PVs
   * - Record name
     - Record type
     - Description
-  * - $(P)$(R)amControlsPv1
-    - stringout
-    - Contains a string PV.
-  * - $(P)$(R)amControlsPv1
+  * - $(P)$(R)RayleighLength
     - ao
-    - Contains a float PV.
-  * - $(P)$(R)amControlsPv1
+    - Contains the Rayleigh Length value
+  * - $(P)$(R)BeamWaist
     - ao
-    - Contains a float PV.
-  * - $(P)$(R)amControlsPv1
+    - Contains the BeamWaist value
+  * - $(P)$(R)BeamWaistYPosition
     - ao
-    - Contains a float PV.
-  * - $(P)$(R)amControlsPv1
-    - stringout
-    - Contains a string PV.
-  * - $(P)$(R)amControlsPv1
-    - stringout
-    - Contains a string PV.
+    - Contains the BeamWaistYPosition value
+  * - $(P)$(R)DesiredBeamDiameter
+    - ao
+    - Contains the DesiredBeamDiameter value
+  * - $(P)$(R)SampleHeight
+    - ao
+    - Contains the SampleHeight value
+
+Defocus select
+^^^^^^^^^^^^^^
+
+.. cssclass:: table-bordered table-striped table-hover
+.. list-table::
+  :header-rows: 1
+  :widths: 5 5 90
+
+  * - Record name
+    - Record type
+    - Description
+  * - $(P)$(R)DefocusSelect
+    - mbbo
+    - Defocus direction selector, Positive or Negative
+
+
+AM status via Channel Access
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. cssclass:: table-bordered table-striped table-hover
+.. list-table::
+  :header-rows: 1
+  :widths: 5 5 90
+
+  * - Record name
+    - Record type
+    - Description
+  * - $(P)$(R)Go
+    - busy
+    - Setting this record to 1 starts a control action.
+  * - $(P)$(R)AMStatus
+    - waveform
+    - This record will be updated with the scan status while scanning.
+  * - $(P)$(R)ServerRunning
+    - bi
+    - This record will be ``Running`` if the Python server is running and ``Stopped`` if not.
+      It is controlled by a watchdog timer, and will change from ``Running`` to ``Stopped``
+      within 5 seconds if the Python server exits.
 
 medm files
 ----------
