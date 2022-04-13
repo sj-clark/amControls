@@ -6,7 +6,7 @@ This is a fully functional epics IOC that provide an example on how to create&se
 
 **amControls** is an EPICS IOC supporting the Additive Manufacturing at beamline 32-ID of the Advanced Photon Source.
 
-.. image:: img/amControls.png 
+.. image:: img/amControls_main.png 
    :width: 720px
    :align: center
    :alt: am_user
