@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=289
-		y=1125
-		width=935
-		height=300
+		x=379
+		y=586
+		width=500
+		height=320
 	}
 	clr=14
 	bclr=4
@@ -87,83 +87,50 @@ display {
 		1a7309,
 	}
 }
-rectangle {
+"related display" {
 	object {
-		x=5
-		y=15
-		width=925
-		height=25
-	}
-	"basic attribute" {
-		clr=2
-	}
-}
-rectangle {
-	object {
-		x=5
-		y=60
-		width=195
+		x=150
+		y=64
+		width=50
 		height=20
 	}
-	"basic attribute" {
-		clr=2
+	display[0] {
+		label="Epics PV Names"
+		name="amControlsEPICS_PVs.adl"
+		args="P=$(P), R=$(R)"
 	}
+	clr=14
+	bclr=51
 }
 text {
 	object {
-		x=322
-		y=15
-		width=300
-		height=25
+		x=5
+		y=64
+		width=140
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Epics PV names"
+}
+text {
+	object {
+		x=80
+		y=34
+		width=50
+		height=20
 	}
 	"basic attribute" {
 		clr=54
 	}
-	textix="AM Controls   $(P)$(R)"
-	align="horiz. centered"
-}
-rectangle {
-	object {
-		x=5
-		y=50
-		width=925
-		height=65
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-}
-"choice button" {
-	object {
-		x=644
-		y=183
-		width=100
-		height=75
-	}
-	control {
-		chan="$(P)$(R)YesNoSelect.VAL"
-		clr=14
-		bclr=51
-	}
-}
-text {
-	object {
-		x=642
-		y=158
-		width=100
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Yes/No"
+	textix="Setup"
 	align="horiz. centered"
 }
 "text update" {
 	object {
-		x=526
-		y=84
+		x=389
+		y=64
 		width=100
 		height=20
 	}
@@ -179,9 +146,9 @@ text {
 }
 "text update" {
 	object {
-		x=526
-		y=60
-		width=400
+		x=389
+		y=40
+		width=100
 		height=20
 	}
 	monitor {
@@ -195,8 +162,8 @@ text {
 }
 text {
 	object {
-		x=347
-		y=60
+		x=209
+		y=40
 		width=130
 		height=20
 	}
@@ -207,8 +174,8 @@ text {
 }
 text {
 	object {
-		x=392
-		y=84
+		x=209
+		y=64
 		width=130
 		height=20
 	}
@@ -219,74 +186,10 @@ text {
 }
 rectangle {
 	object {
-		x=468
-		y=120
-		width=465
-		height=180
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-		width=4
-	}
-}
-composite {
-	object {
-		x=10
-		y=60
-		width=195
-		height=50
-	}
-	"composite name"=""
-	children {
-		"related display" {
-			object {
-				x=155
-				y=90
-				width=50
-				height=20
-			}
-			display[0] {
-				label="Epics PV Names"
-				name="amControlsEPICS_PVs.adl"
-				args="P=$(P), R=$(R)"
-			}
-			clr=14
-			bclr=51
-		}
-		text {
-			object {
-				x=10
-				y=90
-				width=140
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Epics PV names"
-		}
-		text {
-			object {
-				x=144
-				y=60
-				width=50
-				height=20
-			}
-			"basic attribute" {
-				clr=54
-			}
-			textix="Setup"
-			align="horiz. centered"
-		}
-	}
-}
-rectangle {
-	object {
-		x=15
-		y=125
-		width=435
-		height=20
+		x=5
+		y=5
+		width=500
+		height=25
 	}
 	"basic attribute" {
 		clr=2
@@ -294,212 +197,259 @@ rectangle {
 }
 text {
 	object {
-		x=203
-		y=125
-		width=255
-		height=20
+		x=111
+		y=5
+		width=300
+		height=25
 	}
 	"basic attribute" {
 		clr=54
 	}
-	textix="AM served PVs"
+	textix="AM Controls   $(P)$(R)"
+	align="horiz. centered"
 }
-text {
+composite {
 	object {
-		x=169
-		y=275
-		width=160
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="amControlsPv6 float"
-	align="horiz. right"
-}
-text {
-	object {
-		x=159
-		y=150
-		width=170
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="amControlsPv1 string"
-	align="horiz. right"
-}
-text {
-	object {
-		x=69
-		y=175
-		width=260
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="amControlsPv2 float"
-	align="horiz. right"
-}
-text {
-	object {
-		x=69
-		y=200
-		width=260
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="amControlsPv3 float"
-	align="horiz. right"
-}
-text {
-	object {
-		x=39
-		y=225
-		width=290
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="amControlsPv4 float"
-	align="horiz. right"
-}
-text {
-	object {
-		x=169
-		y=250
-		width=160
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="amControlsPv5 string"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=334
-		y=175
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(R)amControlsPv2"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=334
-		y=150
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(R)amControlsPv1"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=334
-		y=225
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(R)amControlsPv4"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=334
-		y=250
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(R)amControlsPv5"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=334
-		y=275
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(R)amControlsPv6"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=334
-		y=200
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(R)amControlsPv3"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=18
-		y=128
-		width=125
-		height=15
-	}
-	"basic attribute" {
-		clr=20
-	}
-	textix="$(P)$(R)"
-}
-rectangle {
-	object {
-		x=5
-		y=120
+		x=20
+		y=100
 		width=455
-		height=180
+		height=205
 	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-		width=5
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=20
+				y=100
+				width=455
+				height=205
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+				width=5
+			}
+		}
+		rectangle {
+			object {
+				x=30
+				y=108
+				width=435
+				height=20
+			}
+			"basic attribute" {
+				clr=2
+			}
+		}
+		text {
+			object {
+				x=209
+				y=108
+				width=255
+				height=20
+			}
+			"basic attribute" {
+				clr=54
+			}
+			textix="Beam Size Control"
+		}
+		text {
+			object {
+				x=33
+				y=110
+				width=125
+				height=15
+			}
+			"basic attribute" {
+				clr=20
+			}
+			textix="$(P)$(R)"
+		}
+		text {
+			object {
+				x=84
+				y=133
+				width=260
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Rayleigh Length"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=84
+				y=158
+				width=260
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Beam Waist"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=84
+				y=183
+				width=260
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Beam Waist Y Position"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=84
+				y=208
+				width=260
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Desired Beam Diameter"
+			align="horiz. right"
+		}
+		"text entry" {
+			object {
+				x=349
+				y=158
+				width=120
+				height=20
+			}
+			control {
+				chan="$(P)$(R)BeamWaist"
+				clr=14
+				bclr=51
+			}
+			format="string"
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=349
+				y=133
+				width=120
+				height=20
+			}
+			control {
+				chan="$(P)$(R)RayleighLenght"
+				clr=14
+				bclr=51
+			}
+			format="string"
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=349
+				y=208
+				width=120
+				height=20
+			}
+			control {
+				chan="$(P)$(R)DesiredBeamDiameter"
+				clr=14
+				bclr=51
+			}
+			format="string"
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=349
+				y=183
+				width=120
+				height=20
+			}
+			control {
+				chan="$(P)$(R)BeamWaistYPosition"
+				clr=14
+				bclr=51
+			}
+			format="string"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=84
+				y=243
+				width=260
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Defocus"
+			align="horiz. right"
+		}
+		"choice button" {
+			object {
+				x=349
+				y=233
+				width=120
+				height=40
+			}
+			control {
+				chan="$(P)$(R)DefocusSelect.VAL"
+				clr=14
+				bclr=51
+			}
+		}
+		text {
+			object {
+				x=84
+				y=278
+				width=260
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Sample Height"
+			align="horiz. right"
+		}
+		"text entry" {
+			object {
+				x=349
+				y=278
+				width=120
+				height=20
+			}
+			control {
+				chan="$(P)$(R)SampleHeight"
+				clr=14
+				bclr=51
+			}
+			format="string"
+			limits {
+			}
+		}
+		"message button" {
+			object {
+				x=28
+				y=127
+				width=80
+				height=60
+			}
+			control {
+				chan="$(P)$(R)Go"
+				clr=14
+				bclr=15
+			}
+			label="Go"
+			press_msg="1"
+		}
 	}
 }

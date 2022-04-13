@@ -19,55 +19,61 @@ record(stringout, "$(P)$(R)ExamplePVName")
    field(VAL,  "$(EXAMPLE_PV_NAME)")
 }
 
-###############
-# Yes/No select
-###############
+################
+# Defocus select
+################
 
-record(mbbo, "$(P)$(R)YesNoSelect") {
+record(mbbo, "$(P)$(R)DefocusSelect") {
   field(DTYP, "Raw Soft Channel")
   field(NOBT, "3")
   field(ZRVL, "0x0")
   field(ONVL, "0x1")
-  field(ZRST, "Yes")
-  field(ONST, "No")
+  field(ZRST, "Positive")
+  field(ONST, "Negative")
 }
 
 ###############
 # AM served PVs
 ###############
 
-record(stringout, "$(P)$(R)amControlsPv1")
-{
-   field(VAL,  "Unknown")
-}
-
-record(ao, "$(P)$(R)amControlsPv2")
+record(ao, "$(P)$(R)RayleighLength")
 {
    field(PREC,  "2")
 }
 
-record(ao, "$(P)$(R)amControlsPv3")
+record(ao, "$(P)$(R)BeamWaist")
 {
-   field(PREC, "2")
-   field(EGU,  "microns")
+   field(PREC,  "2")
 }
 
-record(ao, "$(P)$(R)amControlsPv4")
+record(ao, "$(P)$(R)BeamWaistYPosition")
 {
    field(PREC, "2")
-   field(EGU,  "microns")
 }
 
-record(stringout, "$(P)$(R)amControlsPv5")
-{
-   field(VAL,  "Unknown")
-}
-
-record(ao, "$(P)$(R)amControlsPv6")
+record(ao, "$(P)$(R)DesiredBeamDiameter")
 {
    field(PREC, "2")
-   field(EGU,  "mm")
 }
+
+record(ao, "$(P)$(R)SampleHeight")
+{
+   field(PREC, "2")
+}
+
+###############################
+# AM control via Channel Access
+###############################
+
+record(busy,"$(P)$(R)Go")
+{
+   field(ZNAM,"Done")
+   field(ZSV, "NO_ALARM")
+   field(ONAM,"Go")
+   field(OSV, "MINOR")
+   field(VAL, "0")
+}
+
 
 ##############################
 # AM status via Channel Access
