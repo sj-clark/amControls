@@ -14,7 +14,7 @@ from epics import PV
 
 
 class AMControls():
-    """ Class for controlling TXM optics via EPICS
+    """ Class for controlling Additive Manufacturing apparatus via EPICS
 
         Parameters
         ----------
@@ -52,7 +52,7 @@ class AMControls():
         self.epics_pvs = {**self.config_pvs, **self.control_pvs}
         
         # print(self.epics_pvs)
-        for epics_pv in ('YesNoSelect', ):
+        for epics_pv in ('DefocusSelect', ):
             self.epics_pvs[epics_pv].add_callback(self.pv_callback)
 
         # Start the watchdog timer thread
@@ -161,7 +161,7 @@ class AMControls():
         """
 
         log.debug('pv_callback pvName=%s, value=%s, char_value=%s', pvname, value, char_value)
-        if (pvname.find('YesNoSelect') != -1) and ((value == 0) or (value == 1)):
+        if (pvname.find('DefocusSelect') != -1) and ((value == 0) or (value == 1)):
             thread = threading.Thread(target=self.yes_no_select, args=())
             thread.start()
 
@@ -169,13 +169,13 @@ class AMControls():
         """Plot the cross in imageJ.
         """
 
-        if (self.epics_pvs['YesNoSelect'].get() == 0):
-            am_control_pv2_value = self.epics_pvs['amControlsPv2'].get()
-            self.epics_pvs['amControlsPv2'].put(am_control_pv2_value/2.0)
-            log.info('Yes/No set at %f' % am_control_pv2_value)
+        if (self.epics_pvs['DefocusSelect'].get() == 0):
+            rayleigh_length_value = self.epics_pvs['RayleighLength'].get()
+            self.epics_pvs['RayleighLength'].put(rayleigh_length_value/2.0)
+            log.info('divide by 2: %f' % rayleigh_length_value)
             self.epics_pvs['AMStatus'].put('divide by 2')
         else:
-            am_control_pv2_value = self.epics_pvs['amControlsPv2'].get()
-            self.epics_pvs['amControlsPv2'].put(am_control_pv2_value*2.0)
-            log.info('Yes/No set at %f' % am_control_pv2_value)
+            rayleigh_length_value = self.epics_pvs['RayleighLength'].get()
+            self.epics_pvs['RayleighLength'].put(rayleigh_length_value*2.0)
+            log.info('Multiply by 2: %f' % rayleigh_length_value)
             self.epics_pvs['AMStatus'].put('multiply by 2')

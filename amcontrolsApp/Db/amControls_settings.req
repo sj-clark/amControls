@@ -17,20 +17,24 @@ $(P)$(R)CameraPVPrefix
 ##################
 $(P)$(R)ExamplePVName
 
-###############
-# Yes/No select
-###############
-$(P)$(R)YesNoSelect
+################
+# Defocus select
+################
+$(P)$(R)DefocusSelect
 
 ###############
 # AM served PVs
 ###############
-$(P)$(R)amControlsPv1
-$(P)$(R)amControlsPv2
-$(P)$(R)amControlsPv3
-$(P)$(R)amControlsPv4
-$(P)$(R)amControlsPv5
-$(P)$(R)amControlsPv6
+$(P)$(R)RayleighLength
+$(P)$(R)BeamWaist
+$(P)$(R)BeamWaistYPosition
+$(P)$(R)DesiredBeamDiameter
+$(P)$(R)SampleHeight
+
+###############################
+# AM control via Channel Access
+###############################
+#controlPV $(P)$(R)Go
 
 ##############################
 # AM status via Channel Access
