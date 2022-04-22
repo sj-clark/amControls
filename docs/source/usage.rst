@@ -88,8 +88,8 @@ Start python server
 
     $ bash
     (base) $ conda activate amcontrols
-    (amcontrols) $ cd ~/epics/synApps/support/amcontrols/iocBoot/iocAMControls
-    (amcontrols) $ python -i start_amcontrols.py
+    (amcontrols) fast@merlot $ cd ~/epics/synApps/support/amcontrols/iocBoot/iocAMControls
+    (amcontrols) fast@merlot $ python -i start_amcontrols.py
     configPVS:
     CameraPVPrefix : 2bmbSP2:
     ExamplePVName : 32id:m1
@@ -110,6 +110,21 @@ Start python server
     Camera : 2bmbSP2:
     >>>
 
-**simEpics** control screen with no python server running:
+If you do any modification to the python source code files in::
+
+   ~/epics/synApps/support/amcontrols/amcontrols/
+
+you neeed to rebuld the python server code::
+
+   >>> exit()
+   (amcontrols) fast@merlot $ cd ../..
+   (amcontrols) fast@merlot $ python setup.py install
+   (amcontrols) fast@merlot $ cd iocBoot/iocAMControls/
+   (amcontrols) fast@merlot $ python -i start_amcontrols.py
+
+You can accomplish the same with a single line command::
+
+   (amcontrols) fast@merlot $ cd ../../; python setup.py install; cd iocBoot/iocAMControls/; python -i start_amcontrols.py
+
 
 
