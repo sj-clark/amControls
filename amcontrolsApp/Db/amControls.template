@@ -38,27 +38,32 @@ record(mbbo, "$(P)$(R)DefocusSelect") {
 
 record(ao, "$(P)$(R)RayleighLength")
 {
-   field(PREC,  "2")
+   field(PREC,  "4")
 }
 
 record(ao, "$(P)$(R)BeamWaist")
 {
-   field(PREC,  "2")
+   field(PREC,  "4")
 }
 
 record(ao, "$(P)$(R)BeamWaistYPosition")
 {
-   field(PREC, "2")
+   field(PREC, "4")
 }
 
 record(ao, "$(P)$(R)DesiredBeamDiameter")
 {
-   field(PREC, "2")
+   field(PREC, "4")
 }
 
 record(ao, "$(P)$(R)SampleHeight")
 {
-   field(PREC, "2")
+   field(PREC, "4")
+}
+
+record(ao, "$(P)$(R)FocalPlaneOffset")
+{
+   field(PREC, "4")
 }
 
 ###############################

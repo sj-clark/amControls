@@ -1,11 +1,11 @@
 # This file is used by autosave to determine what PVs to save
-# It is also used by txmOptics to determine what PVs to create
+# It is also used by amControls to determine what PVs to create
 
-# This file contains all of the PVs used by the txmoptics base class.
+# This file contains all of the PVs used by the amControls base class.
 
 # Lines that begin with #controlPV are not saved by autosave,
-# but they are used by txmoptics.  
-# These PVs are not saved in the txmoptics configuration file.
+# but they are used by amControls.  
+# These PVs are not saved in the amControls configuration file.
 
 ###############################
 # TomoScan, Camera  PV Prefixes 
@@ -27,9 +27,10 @@ $(P)$(R)DefocusSelect
 ###############
 $(P)$(R)RayleighLength
 $(P)$(R)BeamWaist
-$(P)$(R)BeamWaistYPosition
+$(P)$(R)FocalPlane
 $(P)$(R)DesiredBeamDiameter
 $(P)$(R)SampleHeight
+$(P)$(R)FocalPlaneOffset
 
 ###############################
 # AM control via Channel Access

@@ -16,6 +16,33 @@ from epics import PV
 class AMControls():
     """ Class for controlling Additive Manufacturing apparatus via EPICS
 
+        The aim of this script is to creat an inuitive interface for users to control 
+        and set the their desiered beam size by positioning their sample of a given
+        height at a calculated distance from the position of the beam waist.
+
+
+              Laser
+            \       /
+             \     /
+              \   /
+               \ /                    ^ + defocus
+              >)(< beam waist   ^ ----- Focal plane
+              / \  beam size    |     v - defocus
+           _>/___\<_______v     |
+            /     \     sample  |
+           /       \    height  | 
+          ________________^     |
+                          ^     |
+             SamY Stage   |     |
+                          v     v
+        -------------------------                  
+        ~~~~~~~~~~~~~~~~~~~~~~~~~
+                                ^
+                                | BaseY stage height
+                                v                        
+        ==========================
+                Floor
+
         Parameters
         ----------
         args : dict
@@ -52,7 +79,7 @@ class AMControls():
         self.epics_pvs = {**self.config_pvs, **self.control_pvs}
         
         # print(self.epics_pvs)
-        for epics_pv in ('DefocusSelect', ):
+        for epics_pv in ('Go', ):
             self.epics_pvs[epics_pv].add_callback(self.pv_callback)
 
         # Start the watchdog timer thread
@@ -161,21 +188,44 @@ class AMControls():
         """
 
         log.debug('pv_callback pvName=%s, value=%s, char_value=%s', pvname, value, char_value)
-        if (pvname.find('DefocusSelect') != -1) and ((value == 0) or (value == 1)):
-            thread = threading.Thread(target=self.yes_no_select, args=())
+        if (pvname.find('Go') != -1) and ((value == 0) or (value == 1)):
+            thread = threading.Thread(target=self.got_to_spot, args=())
             thread.start()
 
-    def yes_no_select(self):
-        """Plot the cross in imageJ.
+    def got_to_spot(self):
+        """Move PV's to get the desired spot size at the sample surface
         """
 
-        if (self.epics_pvs['DefocusSelect'].get() == 0):
-            rayleigh_length_value = self.epics_pvs['RayleighLength'].get()
-            self.epics_pvs['RayleighLength'].put(rayleigh_length_value/2.0)
-            log.info('divide by 2: %f' % rayleigh_length_value)
-            self.epics_pvs['AMStatus'].put('divide by 2')
-        else:
-            rayleigh_length_value = self.epics_pvs['RayleighLength'].get()
-            self.epics_pvs['RayleighLength'].put(rayleigh_length_value*2.0)
-            log.info('Multiply by 2: %f' % rayleigh_length_value)
-            self.epics_pvs['AMStatus'].put('multiply by 2')
+        # Get values
+        RayleighLength_val = self.epics_pvs['RayleighLength'].get()
+        BeamWaist_val = self.epics_pvs['BeamWaist'].get()
+        FocalPlane_val = self.epics_pvs['BeamWaistYPosition'].get()
+        SampleHeight_val = self.epics_pvs['SampleHeight'].get()
+        DesiredBeamDiameter_val = self.epics_pvs['DesiredBeamDiameter'].get()
+        FocalPlaneOffset_prior_val = self.epics_pvs['FocalPlaneOffset'].get()
+        BaseY_val = self.epics_pvs['BaseY'].get()
+        SamY_val = self.epics_pvs['SamY'].get()
+
+        # Calculate offset
+        FocalPlaneOffset_val = RayleighLength_val*((DesiredBeamDiameter_val/BeamWaist_val)**2-1)**(1/2)
+        if (self.epics_pvs['DefocusSelect'].get() == 1):
+            FocalPlaneOffset_val = -FocalPlaneOffset_val
+        
+        FocalPlaneOffset_change = FocalPlaneOffset_val-FocalPlaneOffset_prior_val
+
+        # Effect moves
+        self.epics_pvs['BaseY'].put((BaseY_val-FocalPlaneOffset_change), wait=True)
+        self.epics_pvs['SamY'].put((FocalPlane_val+FocalPlaneOffset-SampleHeight_val), wait=True)
+
+        # Log move
+        log.info('RayleighLength: %f ' % RayleighLength_val)
+        log.info('BeamWaist: %f ' % BeamWaist_val)
+        log.info('FocalPlaneOffset: %f ' % FocalPlane_val)
+        log.info('SampleHeight: %f ' % SampleHeight_val)
+        log.info('DesiredBeamDiameter: %f ' % DesiredBeamDiameter_val)
+        log.info('FocalPlaneOffset: %f ' % FocalPlaneOffset_val)
+        log.info('BaseY: %f ' % BaseY_val)
+        log.info('SamY: %f ' % SamY_val)
+        
+        self.epics_pvs['AMStatus '].put('Move complete')
+
